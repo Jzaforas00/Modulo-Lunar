@@ -3,13 +3,15 @@
   <h1>Módulo Lunar</h1>
 
   <form>
-    <label>ID del mineral</label>
+
+    <label>ID Mineral</label>
     <input
       type="text"
       [(ngModel)]="roca.id"
       name="id"
+      placeholder="AB1234CD"
     >
-    
+
     <label>Nombre</label>
     <input
       type="text"
@@ -28,6 +30,69 @@
       <option>Sedimentarias</option>
     </select>
 
+    <label>Dureza (1-10)</label>
+    <input
+      type="number"
+      [(ngModel)]="roca.dureza"
+      name="dureza"
+      min="1"
+      max="10"
+    >
+
+    <label>Tamaño de grano</label>
+    <select
+      [(ngModel)]="roca.grano"
+      name="grano"
+    >
+      <option value="">Selecciona</option>
+      <option>Muy grueso</option>
+      <option>Grueso</option>
+      <option>Medio</option>
+      <option>Fino</option>
+    </select>
+
+    <label>Clasificación</label>
+    <select
+      [(ngModel)]="roca.clasificacion"
+      name="clasificacion"
+    >
+      <option value="">Selecciona</option>
+      <option>Construcción</option>
+      <option>Ornamentales</option>
+      <option>Utensilios</option>
+      <option>Piedras machacadas</option>
+    </select>
+
+    <label>Tamaño cristales</label>
+    <input
+      type="number"
+      [(ngModel)]="roca.cristales"
+      name="cristales"
+      min="0"
+      max="10"
+    >
+
+    <label>Temperatura Kelvin</label>
+    <input
+      type="number"
+      [(ngModel)]="roca.temperatura"
+      name="temperatura"
+      min="-100"
+      max="100"
+    >
+
+    <label>Estructura</label>
+    <textarea
+      [(ngModel)]="roca.estructura"
+      name="estructura">
+    </textarea>
+
+    <label>Forma de granos</label>
+    <textarea
+      [(ngModel)]="roca.formaGranos"
+      name="formaGranos">
+    </textarea>
+
     <label>Textura</label>
     <select
       [(ngModel)]="roca.textura"
@@ -41,15 +106,34 @@
 
   </form>
 
+  <button (click)="analizar()">Analizar roca</button>
+  
+  <p *ngIf="resultado === true">🙂 Roca válida</p>
+  <p *ngIf="resultado === false">😡 Roca no válida</p>
+
   <div class="resultado">
 
-    <h2>Datos introducidos</h2>
+    <h2>Datos de la roca</h2>
 
     <p><strong>ID:</strong> {{ roca.id }}</p>
 
     <p><strong>Nombre:</strong> {{ roca.nombre }}</p>
 
     <p><strong>Grupo:</strong> {{ roca.grupo }}</p>
+
+    <p><strong>Dureza:</strong> {{ roca.dureza }}</p>
+
+    <p><strong>Grano:</strong> {{ roca.grano }}</p>
+
+    <p><strong>Clasificación:</strong> {{ roca.clasificacion }}</p>
+
+    <p><strong>Cristales:</strong> {{ roca.cristales }}</p>
+
+    <p><strong>Temperatura:</strong> {{ roca.temperatura }}</p>
+
+    <p><strong>Estructura:</strong> {{ roca.estructura }}</p>
+
+    <p><strong>Forma granos:</strong> {{ roca.formaGranos }}</p>
 
     <p><strong>Textura:</strong> {{ roca.textura }}</p>
 
