@@ -7,39 +7,64 @@
     <!-- FORMULARIO -->
     <div class="panel form-panel">
 
-      <h2>Registro de roca</h2>
+      <div class="top-bar">
+        <h2>Registro de roca</h2>
+      </div>
 
       <form>
 
+        <!-- ID -->
         <div class="field">
-          <label>ID Mineral</label>
-          <input type="text" [(ngModel)]="roca.id" name="id" placeholder="AB1234CD">
+          <label *ngIf="modoExtendido">ID Mineral</label>
+          <input
+            type="text"
+            [(ngModel)]="roca.id"
+            name="id"
+            [placeholder]="modoExtendido ? '' : 'ID Mineral (AB1234CD)'">
         </div>
 
+        <!-- NOMBRE -->
         <div class="field">
-          <label>Nombre</label>
-          <input type="text" [(ngModel)]="roca.nombre" name="nombre">
+          <label *ngIf="modoExtendido">Nombre</label>
+          <input
+            type="text"
+            [(ngModel)]="roca.nombre"
+            name="nombre"
+            [placeholder]="modoExtendido ? '' : 'Nombre de la roca'">
         </div>
 
+        <!-- GRUPO -->
         <div class="field">
-          <label>Grupo</label>
+          <label *ngIf="modoExtendido">Grupo</label>
           <select [(ngModel)]="roca.grupo" name="grupo">
-            <option value="">Selecciona</option>
+            <option [ngValue]="''" disabled hidden>
+              {{ modoExtendido ? 'Seleccione' : 'Grupo' }}
+            </option>
             <option>Ígneas</option>
             <option>Metamórficas</option>
             <option>Sedimentarias</option>
           </select>
         </div>
 
+        <!-- DUREZA -->
         <div class="field">
-          <label>Dureza</label>
-          <input type="number" [(ngModel)]="roca.dureza" name="dureza" min="1" max="10">
+          <label *ngIf="modoExtendido">Dureza</label>
+          <input
+            type="number"
+            [(ngModel)]="roca.dureza"
+            name="dureza"
+            min="1"
+            max="10"
+            [placeholder]="modoExtendido ? '' : '1 - 10'">
         </div>
 
+        <!-- GRANO -->
         <div class="field">
-          <label>Grano</label>
+          <label *ngIf="modoExtendido">Grano</label>
           <select [(ngModel)]="roca.grano" name="grano">
-            <option value="">Selecciona</option>
+            <option [ngValue]="''" disabled hidden>
+              {{ modoExtendido ? 'Seleccione' : 'Grano' }}
+            </option>
             <option>Muy grueso</option>
             <option>Grueso</option>
             <option>Medio</option>
@@ -47,10 +72,13 @@
           </select>
         </div>
 
+        <!-- CLASIFICACIÓN -->
         <div class="field">
-          <label>Clasificación</label>
+          <label *ngIf="modoExtendido">Clasificación</label>
           <select [(ngModel)]="roca.clasificacion" name="clasificacion">
-            <option value="">Selecciona</option>
+            <option [ngValue]="''" disabled hidden>
+              {{ modoExtendido ? 'Seleccione' : 'Clasificación' }}
+            </option>
             <option>Construcción</option>
             <option>Ornamentales</option>
             <option>Utensilios</option>
@@ -58,30 +86,51 @@
           </select>
         </div>
 
+        <!-- CRISTALES -->
         <div class="field">
-          <label>Cristales</label>
-          <input type="number" [(ngModel)]="roca.cristales" name="cristales" min="0" max="10">
+          <label *ngIf="modoExtendido">Cristales</label>
+          <input
+            type="number"
+            [(ngModel)]="roca.cristales"
+            name="cristales"
+            min="0"
+            max="10"
+            [placeholder]="modoExtendido ? '' : '0 - 10'">
         </div>
 
+        <!-- TEMPERATURA -->
         <div class="field">
-          <label>Temperatura</label>
-          <input type="number" [(ngModel)]="roca.temperatura" name="temperatura">
+          <label *ngIf="modoExtendido">Temperatura (ºC)</label>
+          <input
+            type="number"
+            [(ngModel)]="roca.temperatura"
+            name="temperatura"
+            [placeholder]="modoExtendido ? '' : 'Temperatura'">
+        </div>
+
+        <!-- TEXTAREAS -->
+        <div class="field full">
+          <label *ngIf="modoExtendido">Estructura</label>
+          <textarea
+            [(ngModel)]="roca.estructura"
+            name="estructura"
+            [placeholder]="modoExtendido ? '' : 'Estructura de la roca'"></textarea>
         </div>
 
         <div class="field full">
-          <label>Estructura</label>
-          <textarea [(ngModel)]="roca.estructura" name="estructura"></textarea>
+          <label *ngIf="modoExtendido">Forma de granos</label>
+          <textarea
+            [(ngModel)]="roca.formaGranos"
+            name="formaGranos"
+            [placeholder]="modoExtendido ? '' : 'Forma de los granos'"></textarea>
         </div>
 
         <div class="field full">
-          <label>Forma de granos</label>
-          <textarea [(ngModel)]="roca.formaGranos" name="formaGranos"></textarea>
-        </div>
-
-        <div class="field full">
-          <label>Textura</label>
+          <label *ngIf="modoExtendido">Textura</label>
           <select [(ngModel)]="roca.textura" name="textura">
-            <option value="">Selecciona</option>
+            <option [ngValue]="''" disabled hidden>
+              {{ modoExtendido ? 'Seleccione' : 'Textura' }}
+            </option>
             <option>Vítrea</option>
             <option>Afanítica</option>
             <option>Fanerítica</option>
@@ -100,14 +149,90 @@
       <h2>Control de misión</h2>
 
       <div class="resultado" *ngIf="resultado !== null">
-
         <p *ngIf="resultado" class="ok">🙂 Roca válida</p>
         <p *ngIf="!resultado" class="bad">😡 Roca no válida</p>
+      </div>
+
+      <button type="button" (click)="cambiarModo()" class="mode-btn">
+          {{ modoExtendido ? 'Modo reducido' : 'Modo extendido' }}
+      </button>
+
+      <!-- DATOS DE LA ROCA (SOLO SI ES VÁLIDA) -->
+      <div *ngIf="resultado">
+
+        <div class="format-box">
+
+          <h3>
+            {{ formato === 'EU' ? 'Formato Europeo (ESA)' : 'Formato Americano (NASA)' }}
+          </h3>
+
+          <p><strong>ID:</strong> {{ roca.id }}</p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Nombre' : 'Name' }}:</strong>
+            {{ roca.nombre }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Grupo' : 'Group' }}:</strong>
+            {{ roca.grupo }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Dureza' : 'Hardness' }}:</strong>
+            {{ roca.dureza }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Grano' : 'Grain' }}:</strong>
+            {{ roca.grano }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Clasificación' : 'Classification' }}:</strong>
+            {{ roca.clasificacion }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Cristales' : 'Crystals' }}:</strong>
+            {{ roca.cristales }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Temperatura' : 'Temperature' }}:</strong>
+            {{ formato === 'EU'
+              ? roca.temperatura + ' °C'
+              : toFahrenheit(roca.temperatura) + ' °F'
+            }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Estructura' : 'Structure' }}:</strong>
+            {{ roca.estructura }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Forma de granos' : 'Grain shape' }}:</strong>
+            {{ roca.formaGranos }}
+          </p>
+
+          <p>
+            <strong>{{ formato === 'EU' ? 'Textura' : 'Texture' }}:</strong>
+            {{ roca.textura }}
+          </p>
+
+        </div>
+
+        <button class="mode-btn" (click)="cambiarFormato()">
+          {{ formato === 'EU'
+            ? 'Cambiar a formato americano'
+            : 'Cambiar a formato europeo'
+          }}
+        </button>
 
       </div>
 
     </div>
 
   </div>
-
 </div>

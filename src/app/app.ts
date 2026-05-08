@@ -56,6 +56,21 @@ export class AppComponent {
 
     this.resultado = valido;
   }
+
+  modoExtendido: boolean = true;
+
+  cambiarModo() {
+    this.modoExtendido = !this.modoExtendido;
+  }
   
+  formato: 'EU' | 'US' = 'EU';
+
+  cambiarFormato() {
+    this.formato = this.formato === 'EU' ? 'US' : 'EU';
+  }
+
+  toFahrenheit(c: number): number {
+    return (c * 9 / 5) + 32;
+  }
 }
 
