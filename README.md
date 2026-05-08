@@ -1,63 +1,105 @@
-<<<<<<< HEAD
-# ModuloLunar
+# Modulo-Lunar 🌕🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.10.
+## Project Description
 
-## Development server
+The goal is to develop a responsive web platform for managing minerals collected on the lunar surface by an astronaut. The application allows users to register, validate, and display information about different types of minerals according to defined scientific criteria.
 
-To start a local development server, run:
+---
+
+## Main functionality
+
+The application allows the entry of mineral data with the following characteristics:
+
+- Mineral identifier  
+- Name with a specific format: **LLDDDDLL**  
+- Group / Origin:
+  - Igneous
+  - Metamorphic
+  - Sedimentary  
+- Hardness (Mohs scale: 1 to 10)  
+- Grain size:
+  - Very coarse (> 30 mm)
+  - Coarse (5 to 30 mm)
+  - Medium (2 to 5 mm)
+  - Fine (< 2 mm)
+- Classification:
+  - Construction rocks
+  - Ornamental rocks
+  - Tools-use rocks
+  - Crushed stones
+- Crystal size (0 to 10)  
+- Formation temperature (-100 to 100 K)  
+- Structure (free text)  
+- Grain shape (free text)  
+- Texture:
+  - Glassy
+  - Aphanitic
+  - Phaneritic  
+
+---
+
+## Data entry systems
+
+The application provides two input modes:
+
+- **Extended mode**: with labels and visible text fields  
+- **Reduced mode**: using placeholders in inputs  
+
+---
+
+## Mineral validation
+
+Three criteria are used to determine whether a mineral is valid:
+
+### Igneous
+- Group: Igneous  
+- Grain: very coarse  
+
+### Metamorphic
+- Group: Metamorphic  
+- Grain: medium or fine  
+- Texture: glassy  
+
+### Sedimentary
+- Group: Sedimentary  
+- Texture: phaneritic  
+
+---
+
+## Validation result
+
+- ✅ If the mineral meets the criteria → a happy face is displayed 🙂  
+- ❌ If it does not meet the criteria → an angry face is displayed ☹️  
+
+---
+
+## Output formats
+
+Mineral information can be displayed in two formats:
+
+### 🇺🇸 American format
+- Text in English  
+- Temperature in Fahrenheit  
+
+### 🇪🇺 European format
+- Text in Spanish  
+- Temperature in Celsius  
+
+---
+
+## Technologies used
+
+- Angular  
+- TypeScript  
+- HTML5  
+- CSS3  
+- Responsive design  
+
+---
+
+## Execution
+
+In the terminal:
 
 ```bash
 ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# Modulo-Lunar
->>>>>>> e5bc5392df3c8da1735a507a8c5ec95c0e49e1ad
