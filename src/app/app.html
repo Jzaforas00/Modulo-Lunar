@@ -2,140 +2,111 @@
 
   <h1>Módulo Lunar</h1>
 
-  <form>
+  <div class="layout">
 
-    <label>ID Mineral</label>
-    <input
-      type="text"
-      [(ngModel)]="roca.id"
-      name="id"
-      placeholder="AB1234CD"
-    >
+    <!-- FORMULARIO -->
+    <div class="panel form-panel">
 
-    <label>Nombre</label>
-    <input
-      type="text"
-      [(ngModel)]="roca.nombre"
-      name="nombre"
-    >
+      <h2>Registro de roca</h2>
 
-    <label>Grupo</label>
-    <select
-      [(ngModel)]="roca.grupo"
-      name="grupo"
-    >
-      <option value="">Selecciona</option>
-      <option>Ígneas</option>
-      <option>Metamórficas</option>
-      <option>Sedimentarias</option>
-    </select>
+      <form>
 
-    <label>Dureza (1-10)</label>
-    <input
-      type="number"
-      [(ngModel)]="roca.dureza"
-      name="dureza"
-      min="1"
-      max="10"
-    >
+        <div class="field">
+          <label>ID Mineral</label>
+          <input type="text" [(ngModel)]="roca.id" name="id" placeholder="AB1234CD">
+        </div>
 
-    <label>Tamaño de grano</label>
-    <select
-      [(ngModel)]="roca.grano"
-      name="grano"
-    >
-      <option value="">Selecciona</option>
-      <option>Muy grueso</option>
-      <option>Grueso</option>
-      <option>Medio</option>
-      <option>Fino</option>
-    </select>
+        <div class="field">
+          <label>Nombre</label>
+          <input type="text" [(ngModel)]="roca.nombre" name="nombre">
+        </div>
 
-    <label>Clasificación</label>
-    <select
-      [(ngModel)]="roca.clasificacion"
-      name="clasificacion"
-    >
-      <option value="">Selecciona</option>
-      <option>Construcción</option>
-      <option>Ornamentales</option>
-      <option>Utensilios</option>
-      <option>Piedras machacadas</option>
-    </select>
+        <div class="field">
+          <label>Grupo</label>
+          <select [(ngModel)]="roca.grupo" name="grupo">
+            <option value="">Selecciona</option>
+            <option>Ígneas</option>
+            <option>Metamórficas</option>
+            <option>Sedimentarias</option>
+          </select>
+        </div>
 
-    <label>Tamaño cristales</label>
-    <input
-      type="number"
-      [(ngModel)]="roca.cristales"
-      name="cristales"
-      min="0"
-      max="10"
-    >
+        <div class="field">
+          <label>Dureza</label>
+          <input type="number" [(ngModel)]="roca.dureza" name="dureza" min="1" max="10">
+        </div>
 
-    <label>Temperatura Kelvin</label>
-    <input
-      type="number"
-      [(ngModel)]="roca.temperatura"
-      name="temperatura"
-      min="-100"
-      max="100"
-    >
+        <div class="field">
+          <label>Grano</label>
+          <select [(ngModel)]="roca.grano" name="grano">
+            <option value="">Selecciona</option>
+            <option>Muy grueso</option>
+            <option>Grueso</option>
+            <option>Medio</option>
+            <option>Fino</option>
+          </select>
+        </div>
 
-    <label>Estructura</label>
-    <textarea
-      [(ngModel)]="roca.estructura"
-      name="estructura">
-    </textarea>
+        <div class="field">
+          <label>Clasificación</label>
+          <select [(ngModel)]="roca.clasificacion" name="clasificacion">
+            <option value="">Selecciona</option>
+            <option>Construcción</option>
+            <option>Ornamentales</option>
+            <option>Utensilios</option>
+            <option>Piedras machacadas</option>
+          </select>
+        </div>
 
-    <label>Forma de granos</label>
-    <textarea
-      [(ngModel)]="roca.formaGranos"
-      name="formaGranos">
-    </textarea>
+        <div class="field">
+          <label>Cristales</label>
+          <input type="number" [(ngModel)]="roca.cristales" name="cristales" min="0" max="10">
+        </div>
 
-    <label>Textura</label>
-    <select
-      [(ngModel)]="roca.textura"
-      name="textura"
-    >
-      <option value="">Selecciona</option>
-      <option>Vítrea</option>
-      <option>Afanítica</option>
-      <option>Fanerítica</option>
-    </select>
+        <div class="field">
+          <label>Temperatura</label>
+          <input type="number" [(ngModel)]="roca.temperatura" name="temperatura">
+        </div>
 
-  </form>
+        <div class="field full">
+          <label>Estructura</label>
+          <textarea [(ngModel)]="roca.estructura" name="estructura"></textarea>
+        </div>
 
-  <button (click)="analizar()">Analizar roca</button>
-  
-  <p *ngIf="resultado === true">🙂 Roca válida</p>
-  <p *ngIf="resultado === false">😡 Roca no válida</p>
+        <div class="field full">
+          <label>Forma de granos</label>
+          <textarea [(ngModel)]="roca.formaGranos" name="formaGranos"></textarea>
+        </div>
 
-  <div class="resultado">
+        <div class="field full">
+          <label>Textura</label>
+          <select [(ngModel)]="roca.textura" name="textura">
+            <option value="">Selecciona</option>
+            <option>Vítrea</option>
+            <option>Afanítica</option>
+            <option>Fanerítica</option>
+          </select>
+        </div>
 
-    <h2>Datos de la roca</h2>
+      </form>
 
-    <p><strong>ID:</strong> {{ roca.id }}</p>
+      <button (click)="analizar()">Analizar roca</button>
 
-    <p><strong>Nombre:</strong> {{ roca.nombre }}</p>
+    </div>
 
-    <p><strong>Grupo:</strong> {{ roca.grupo }}</p>
+    <!-- RESULTADO -->
+    <div class="panel result-panel">
 
-    <p><strong>Dureza:</strong> {{ roca.dureza }}</p>
+      <h2>Control de misión</h2>
 
-    <p><strong>Grano:</strong> {{ roca.grano }}</p>
+      <div class="resultado" *ngIf="resultado !== null">
 
-    <p><strong>Clasificación:</strong> {{ roca.clasificacion }}</p>
+        <p *ngIf="resultado" class="ok">🙂 Roca válida</p>
+        <p *ngIf="!resultado" class="bad">😡 Roca no válida</p>
 
-    <p><strong>Cristales:</strong> {{ roca.cristales }}</p>
+      </div>
 
-    <p><strong>Temperatura:</strong> {{ roca.temperatura }}</p>
-
-    <p><strong>Estructura:</strong> {{ roca.estructura }}</p>
-
-    <p><strong>Forma granos:</strong> {{ roca.formaGranos }}</p>
-
-    <p><strong>Textura:</strong> {{ roca.textura }}</p>
+    </div>
 
   </div>
 

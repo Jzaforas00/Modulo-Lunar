@@ -1,59 +1,163 @@
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f0f2f5;
-}
-
+/* CONTENEDOR */
 .container {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
+  
 }
 
+/* TÍTULO */
 h1 {
   text-align: center;
-  color: #1e3a5f;
-  margin-bottom: 30px;
+  font-size: 2.4rem;
+  letter-spacing: 3px;
+  color: #7dd3fc;
+  text-shadow: 0 0 10px rgba(125, 211, 252, 0.25);
+  margin: 10px;
 }
 
-form {
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
+/* LAYOUT CENTRADO */
+.layout {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
 
+/* PANEL BASE */
+.panel {
+  background: #0b1224;
+  border: 1px solid rgba(125, 211, 252, 0.15);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* 🧪 FORMULARIO MÁS COMPACTO */
+.form-panel {
+  flex: 0 1 680px;
+  max-width: 680px;
+}
+
+/* 📡 PANEL RESULTADO PEQUEÑO */
+.result-panel {
+  flex: 0 0 220px;
+  max-width: 220px;
+}
+
+/* TÍTULOS */
+.panel h2 {
+  margin-top: 0;
+  color: #38bdf8;
+}
+
+/* GRID DEL FORMULARIO */
+form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 14px;
+}
+
+/* BLOQUE CAMPO */
+.field {
   display: flex;
   flex-direction: column;
-  gap: 15px;
 }
 
+/* OCUPAR TODA LA FILA */
+.full {
+  grid-column: span 2;
+}
+
+/* LABEL */
 label {
-  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 0.78rem;
+  color: #93c5fd;
 }
 
+/* INPUTS */
 input,
 select,
 textarea {
+  width: 100%;
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+  outline: none;
 }
 
+/* FOCUS LIMPIO */
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #38bdf8;
+}
+
+/* TEXTAREA */
 textarea {
+  min-height: 65px;
   resize: vertical;
-  min-height: 80px;
 }
 
+/* BOTÓN */
+button {
+  margin-top: 14px;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: white;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* RESULTADO */
 .resultado {
-  margin-top: 30px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 12px;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 }
 
-@media (max-width: 768px) {
+/* ESTADOS */
+.ok {
+  color: #22c55e;
+  font-size: 1.05rem;
+}
 
-  .container {
-    padding: 10px;
+.bad {
+  color: #ef4444;
+  font-size: 1.05rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+    align-items: stretch;
   }
 
+  .form-panel,
+  .result-panel {
+    max-width: 100%;
+    flex: 1;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .full {
+    grid-column: span 1;
+  }
 }
